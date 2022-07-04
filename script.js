@@ -1,9 +1,5 @@
-function vikas(mystr){
-    console.log("I'm Healthy")
-
-    return 100;
+for(var i=0;i<5;i++){
+    console.log(i);
 }
-
-let result= vikas(6);
-
-console.log(result)
+console.log("dsdsdsds")
+console.log(i);
