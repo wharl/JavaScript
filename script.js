@@ -1,5 +1,5 @@
-for(var i=0;i<5;i++){
-    console.log(i);
+const elem= document.getElementById("name");
+
+elem.ondblclick=function() {
+    console.log("Clicked!")
 }
-console.log("dsdsdsds")
-console.log(i);
