@@ -2,16 +2,32 @@
 <html>
 
     <head>
-        <title>Vikas Singh</title>
-        <link rel="stylesheet" type="text/css" href="style.css">
+        <title>Car Game</title>
+        <style>
+            .hide{
+                display:none;
+            }
+        </style>
     </head>
 
     <body>
-        <div class="output"></div>
-        <input type="number" value="1000">
-        <button type="button">Tip</button>
-        
-        <script src="./script.js"></script>
+        <div class="score"></div>
+        <div class="game">
+            <div class="startScreen">Welcome Player</div>
+            <div class="gameArea hide"></div>
+        </div>
+
+        <script>
+            const score=document.querySelector(".score");
+            const startScreen= document.querySelector(".startScreen");
+            const gameArea=document.querySelector(".gameArea");
+
+            startScreen.addEventListener("Clicked", start);
+
+            function start(){
+                console.log("Click!");
+            }
+        </script>
     </body>
 
 </html>
