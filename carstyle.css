@@ -2,6 +2,14 @@
     display: none;
 }
 
+.score {
+    height: 20px;
+    text-align: center;
+    color: black;
+    width: 120px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
 .car,
 .enemy {
     position: absolute;
@@ -27,4 +35,12 @@
     overflow: hidden;
     position: relative;
     margin: auto;
+}
+
+.startScreen{
+    text-align: center;
+    border: 1px solid red;
+    padding: 15px;
+    margin: auto;
+    width: 300px;
 }

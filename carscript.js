@@ -2,7 +2,7 @@ const score = document.querySelector(".score");
 const startScreen = document.querySelector(".startScreen");
 const gameArea = document.querySelector(".gameArea");
 
-let player = { speed: 7 };
+let player = { speed: 7, score: 0 };
 
 let keys = {
     ArrowLeft: false,
@@ -15,7 +15,7 @@ startScreen.addEventListener("click", start);
 document.addEventListener("keydown", pressOn);
 document.addEventListener("keyup", pressOff);
 
-function moveline() {
+function moveLine() {
     let lines = document.querySelectorAll(".line");
     lines.forEach(function (item) {
         console.log(item.y);
@@ -24,23 +24,40 @@ function moveline() {
         }
         item.y += player.speed;
         item.style.top = item.y + "px";
-    })
+    });
 }
-function moveEnemy() {
+
+function isCollide(a, b) {
+    let aRect = a.getBoundingClientRect();
+    let bRect = b.getBoundingClientRect();
+
+    return !(
+        (aRect.bottom < bRect.top) ||
+        (aRect.top < bRect.bottom) ||
+        (aRect.right < bRect.left) ||
+        (aRect.left < bRect.right)
+    )
+}
+
+function moveEnemy(car) {
     let ele = document.querySelectorAll(".enemy");
     ele.forEach(function (item) {
+        if (isCollide(car, item)) {
+            console.log("HIT");
+            endGame();
+        }
         if (item.y >= 1500) {
             item.y = -600;
             item.style.left = Math.floor(Math.random() * 150) + "px";
         }
         item.y += player.speed;
         item.style.top = item.y + "px";
-    })
+    });
 }
 function playGame() {
     let car = document.querySelector(".car");
-    moveline();
-    moveEnemy();
+    moveLine();
+    moveEnemy(car);
     let road = gameArea.getBoundingClientRect();
 
     if (player.start) {
@@ -60,6 +77,8 @@ function playGame() {
         car.style.top = player.y + "px";
 
         requestAnimationFrame(playGame);
+        player.score++;
+        score.innerText = "Score: " + player.score;
     }
 }
 
@@ -75,10 +94,18 @@ function pressOff(e) {
     console.log(keys);
 }
 
+function endGame() {
+    player.start = false;
+    score.innerHTML = "<br><br><br>Game Over <br> Your Score is " + player.score;
+    startScreen.classList.remove("hide");
+
+}
+
 function start() {
     startScreen.classList.add("hide");
     gameArea.classList.remove("hide");
     player.start = true;
+    player.score = 0;
     for (let x = 0; x < 10; x++) {
         let div = document.createElement("div");
         div.classList.add("line");
@@ -99,7 +126,7 @@ function start() {
         enemy.classList.add("enemy");
         enemy.y = (x + 1) * 600 * -1;
         enemy.style.top = enemy.y + "px";
-        item.style.left = Math.floor(Math.random() * 150) + "px";
+        enemy.style.left = Math.floor(Math.random() * 150) + "px";
         enemy.style.backgroundColor = "red";
         gameArea.appendChild(enemy);
     }
