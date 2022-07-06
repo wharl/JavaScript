@@ -2,7 +2,7 @@ const score = document.querySelector(".score");
 const startScreen = document.querySelector(".startScreen");
 const gameArea = document.querySelector(".gameArea");
 
-let player = { speed: 7, score: 0 };
+let player = { speed: 10, score: 0 };
 
 let keys = {
     ArrowLeft: false,
@@ -18,13 +18,12 @@ document.addEventListener("keyup", pressOff);
 function moveLine() {
     let lines = document.querySelectorAll(".line");
     lines.forEach(function (item) {
-        console.log(item.y);
         if (item.y >= 1500) {
             item.y -= 1500;
         }
         item.y += player.speed;
         item.style.top = item.y + "px";
-    });
+    })
 }
 
 function isCollide(a, b) {
@@ -49,6 +48,7 @@ function moveEnemy(car) {
         if (item.y >= 1500) {
             item.y = -600;
             item.style.left = Math.floor(Math.random() * 150) + "px";
+            item.style.backgroundColor = '#' + Math.floor(Math.random() * 16777215).toString(16);
         }
         item.y += player.speed;
         item.style.top = item.y + "px";
@@ -103,7 +103,7 @@ function endGame() {
 
 function start() {
     startScreen.classList.add("hide");
-    gameArea.classList.remove("hide");
+    gameArea.innerHTML = "";
     player.start = true;
     player.score = 0;
     for (let x = 0; x < 10; x++) {
@@ -115,7 +115,7 @@ function start() {
     }
     window.requestAnimationFrame(playGame);
     let car = document.createElement("div");
-    car.innerText = "Car";
+    // car.innerText = "";
     car.setAttribute("class", "car");
     gameArea.appendChild(car);
     player.x = car.offsetLeft;
@@ -127,7 +127,7 @@ function start() {
         enemy.y = (x + 1) * 600 * -1;
         enemy.style.top = enemy.y + "px";
         enemy.style.left = Math.floor(Math.random() * 150) + "px";
-        enemy.style.backgroundColor = "red";
+        enemy.style.backgroundColor = '#' + Math.floor(Math.random() * 16777215).toString(16);
         gameArea.appendChild(enemy);
     }
 }
