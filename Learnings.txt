@@ -1,0 +1,61 @@
+dotnet tool install --global dotnet-ef
+dotnet add package Microsoft.EntityFrameworkCore.Design
+dotnet ef migrations add InitialCreate
+dotnet ef database update
+
+
+
+dotnet nuget add source --name nuget.org https://api.nuget.org/v3/index.json
+
+dotnet new console
+
+dotnet new webapi --auth none --framework netcoreapp3.1
+
+dotnet ef dbcontext scaffold "user id=tclc.admin;Password=Windows@1;Initial Catalog=ReportAndDashboardAndLogs;Data Source=tclc-tae.database.windows.net;" Microsoft.EntityFrameworkCore.SqlServer -o Model
+
+https://api.nuget.org/v3/index.json
+
+
+
+"connectionStrings": {
+
+    "emplpoyeeDBString": "Data Source=JKTNOLAP844\\SQLEXPRESS;Initial Catalog=SarathlalDB;Integrated Security=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"
+
+  },
+
+
+
+User name: devteam@thecarloancentre.co.ukPasssword: Bop46983
+
+SVN: vikas.singh
+VSingh@123
+
+https://postliveaxlehub.azurewebsites.net/
+Password@123
+
+DEVUser
+$Y0uH@veM0reP0wer
+
+tclc.admin
+Windows@1
+
+jyothi.sanjay@thecarloancentre.co.uk
+Faz60774
+
+https://10.0.1.25/svn
+Axle Hub | | The Car Loan Centre | | CRM 
+The Car Loan Centre - Axle Hub
+
+
+pass postgressql 12345
+
+Udemy
+rocky161293@gmail.com
+Rocky@1993
+
+
+git add .
+git commit -m "creating initial files"
+git remote set-url origin https://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@github.com/wharl/JavaScript.git
+git push origin main
+
